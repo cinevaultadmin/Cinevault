@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090812">
+<title>CINEVAULT - Movie Downloads</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#090812;color:#fff;font-family:Arial,sans-serif}
+header{padding:19px 5%;background:#100d1c;border-bottom:1px solid #29213c;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-size:25px;font-weight:900;letter-spacing:2px;color:#c5a4ff}
+.logo span{color:white}
+nav{display:flex;gap:18px;flex-wrap:wrap}
+nav a{color:#ddd;text-decoration:none;font-size:13px}
+.hero{padding:55px 6% 45px;background:linear-gradient(120deg,#171027,#090812 75%)}
+.hero h1{font-size:36px;margin-bottom:12px}
+.hero h1 span{color:#bd9aff}
+.hero p{color:#aaa;line-height:1.6;font-size:14px}
+.search{margin-top:25px;display:flex;max-width:550px}
+.search input{flex:1;min-width:0;padding:15px;background:#171321;border:1px solid #59417d;border-radius:8px 0 0 8px;color:white;outline:none}
+.search button{padding:0 20px;background:#a77af2;color:#10091b;border:0;border-radius:0 8px 8px 0;font-weight:bold}
+main{padding:28px 5%}
+.section-title{font-size:21px;margin-bottom:20px}
+.section-title span{color:#bd9aff}
+.filters{display:flex;gap:9px;overflow-x:auto;padding-bottom:20px}
+.filter{white-space:nowrap;padding:9px 15px;border:1px solid #40304f;border-radius:20px;color:#ddd;background:#15111e;font-size:12px}
+.filter.active{background:#b28af5;color:#140c20;border-color:#b28af5}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.movie{background:#171321;border:1px solid #30243e;border-radius:10px;overflow:hidden}
+.poster{height:190px;background:linear-gradient(145deg,#35214d,#171321);display:flex;align-items:center;justify-content:center;color:#c5a4ff;font-size:35px;font-weight:bold}
+.info{padding:13px}
+.info h3{font-size:14px;margin-bottom:7px}
+.info p{font-size:11px;color:#aaa;line-height:1.6}
+.empty{grid-column:1/-1;text-align:center;padding:40px 15px;background:#15111e;border-radius:10px;border:1px dashed #59417d}
+.empty h3{color:#c5a4ff;margin-bottom:10px}
+.empty p{font-size:13px;color:#aaa;line-height:1.7}
+footer{padding:28px 5%;text-align:center;color:#888;border-top:1px solid #29213c;font-size:12px;line-height:1.8}
+@media(min-width:650px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.poster{height:240px}.hero h1{font-size:48px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">CINE<span>VAULT</span></div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#movies">Movies</a>
+    <a href="#categories">Categories</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Welcome to <span>CINEVAULT</span></h1>
+  <p>Your destination for discovering movies.<br>
+  Explore movie collections, details and authorized downloads.</p>
+  <div class="search">
+    <input id="search" type="search" placeholder="Search movies...">
+    <button onclick="searchMovies()">SEARCH</button>
+  </div>
+</section>
+
+<main id="movies">
+  <h2 class="section-title">Latest <span>Movies</span></h2>
+
+  <div class="filters" id="categories">
+    <button class="filter active" onclick="filterMovies('All',this)">All</button>
+    <button class="filter" onclick="filterMovies('Bollywood',this)">Bollywood</button>
+    <button class="filter" onclick="filterMovies('Hollywood',this)">Hollywood</button>
+    <button class="filter" onclick="filterMovies('South Indian',this)">South Indian</button>
+    <button class="filter" onclick="filterMovies('Hindi Dubbed',this)">Hindi Dubbed</button>
+  </div>
+
+  <div class="grid" id="movieGrid">
+    <div class="empty">
+      <h3>Welcome to CINEVAULT</h3>
+      <p>Movies will appear here after the admin uploads them.<br>
+      Stay tuned for the latest collection.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="logo">CINEVAULT</div>
+  <p>Discover. Explore. Download.</p>
+  <p>Downloads will be provided only for authorized content.</p>
+  <p>© 2026 CINEVAULT. All rights reserved.</p>
+</footer>
+
+<script>
+function searchMovies(){
+  const q=document.getElementById('search').value.trim();
+  if(!q){
+    alert('Please enter a movie name.');
+    return;
+  }
+  alert('Movie search: '+q+'. Movie catalogue will be connected soon.');
+}
+function filterMovies(category,button){
+  document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
+  button.classList.add('active');
+}
+</script>
+
+</body>
+</html>
